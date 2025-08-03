@@ -12,7 +12,8 @@ class NowPlayingTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: movies.length,
+      // Dummy Size of 10 To be Shown.
+      itemCount: 10,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 20,
