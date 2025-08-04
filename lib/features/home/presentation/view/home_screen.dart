@@ -3,6 +3,7 @@ import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/core/utils/dimensions_manager.dart';
 import 'package:movie_cellula/core/widgets/top_five_card.dart';
+import 'package:movie_cellula/features/detail/presentation/view/detail_screen.dart';
 import 'package:movie_cellula/features/home/presentation/view/tabs/now_playing_tab.dart';
 import 'package:movie_cellula/features/home/presentation/view/tabs/popular_tab.dart';
 import 'package:movie_cellula/features/home/presentation/view/tabs/top_rated_tab.dart';
@@ -10,7 +11,6 @@ import 'package:movie_cellula/features/home/presentation/view/tabs/upcoming_tab.
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,7 +47,17 @@ class HomeScreen extends StatelessWidget {
                     imageUrl: "",
                     numberTag: (index + 1).toString(),
                     onTap: () {
-                      // TODO
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DetailScreen(
+                            // TODO
+                            coverImage: "",
+                            smallImage: "",
+                            rate: "",
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ),
