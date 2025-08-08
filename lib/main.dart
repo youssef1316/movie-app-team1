@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
-import 'package:movie_cellula/features/detail/presentation/view/detail_screen.dart';
 import 'package:movie_cellula/features/splash/presentation/splash_screen.dart';
 
 void main() {
