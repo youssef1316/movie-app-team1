@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_cellula/core/utils/dimensions_manager.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../utils/colors_manager.dart';
 
 class MainMovieCard extends StatelessWidget {
@@ -25,7 +25,15 @@ class MainMovieCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         // Please add image child below after integrate api
-        // child: Image.network(imageUrl),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
+          )
       ),
     );
   }
