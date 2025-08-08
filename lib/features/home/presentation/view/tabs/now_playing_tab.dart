@@ -30,6 +30,9 @@ class NowPlayingTab extends StatelessWidget {
                 builder: (context) => DetailScreen(
                   coverImage: "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
                   smallImage: "https://image.tmdb.org/t/p/w500${movie.posterPath}",
+                  title: movie.title,
+                  releasedate: movie.releaseDate,
+                  runtime: movie.runtime,
                   rate: movie.voteAverage.toString(),
                 ),
               ),

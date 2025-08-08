@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 class MovieTabSection extends StatelessWidget {
-  const MovieTabSection({super.key});
+  final String? overview;
+
+  const MovieTabSection({
+    super.key,
+    this.overview
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +32,22 @@ class MovieTabSection extends StatelessWidget {
           const SizedBox(height: 16),
           SizedBox(
             height: 200,
-            child: const TabBarView(
+            child: TabBarView(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    "From DC Comics comes the Suicide Squad, an antihero team of incarcerated supervillains who act as deniable assets for the United States government, undertaking high-risk black ops missions in exchange for commuted prison sentences.",
-                    style: TextStyle(color: Colors.white, height: 1.5),
+                    overview ?? 'No overview available',
+                    style: const TextStyle(color: Colors.white, height: 1.5),
                   ),
                 ),
-                Center(
+                const Center(
                   child: Text(
                     "Reviews content here",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                Center(
+                const Center(
                   child: Text(
                     "Cast content here",
                     style: TextStyle(color: Colors.white),

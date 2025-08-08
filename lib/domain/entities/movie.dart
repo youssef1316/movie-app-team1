@@ -14,6 +14,7 @@ class Movie {
     this.video,
     this.voteAverage,
     this.voteCount,
+    this.runtime
   });
   bool? adult;
   String? backdropPath;
@@ -29,4 +30,5 @@ class Movie {
   bool? video;
   double? voteAverage;
   int? voteCount;
+  int? runtime;
 }

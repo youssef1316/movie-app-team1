@@ -4,15 +4,25 @@ import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/features/detail/presentation/widgets/movie_tab_section.dart';
 
 class DetailScreen extends StatelessWidget {
+  final String coverImage;
+  final String smallImage;
+  final String rate;
+  final String? title;
+
+  final String? releasedate;
+  final int? runtime;
+
+
   const DetailScreen({
     super.key,
     required this.coverImage,
     required this.smallImage,
     required this.rate,
+    required this.title,
+    required this.releasedate,
+    required this.runtime
   });
-  final String coverImage;
-  final String smallImage;
-  final String rate;
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,21 +66,43 @@ class DetailScreen extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 // Movie Cover
-                Image.asset(
-                  ImagesManager.coverDetailsImage,
+                Image.network(
+                  coverImage,
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: height * 0.3,
+                  errorBuilder: (context, error, stackTrace){
+                    return Container(
+                      width: double.infinity,
+                      height: height * 0.3,
+                      color: Colors.grey.shade800,
+                      child: const Center(
+                        child: Icon(Icons.broken_image, color: Colors.white70, size: 40),
+                      ),
+                    );
+                  },
                 ),
                 // Small Photo
                 Positioned(
                   left: width * 0.07,
                   top: height * 0.22,
-                  child: Image.asset(
-                    ImagesManager.smallDetailsImage,
+                  child: Image.network(
+                    smallImage,
                     height: height * 0.15,
                     width: width * 0.25,
                     fit: BoxFit.fill,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          width: double.infinity,
+                          height: height * 0.3,
+                          color: Colors.grey.shade800,
+                          child: const Center(
+                            child: Icon(
+                                Icons.broken_image, color: Colors.white70,
+                                size: 40),
+                          ),
+                        );
+                    }
                   ),
                 ),
                 // Rate
@@ -90,21 +122,22 @@ class DetailScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Spiderman No Way",
+                        title ?? "No title",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: width * 0.05,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Text(
-                        "Home",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: width * 0.05,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      if (releasedate != null)
+                        Text(
+                          releasedate!,
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: width * 0.035,
+                            fontWeight: FontWeight.w500
+                          ),
+                        )
                     ],
                   ),
                 ),
@@ -118,7 +151,7 @@ class DetailScreen extends StatelessWidget {
                 children: [
                   Image.asset(IconsManager.calenderIcon, width: width * 0.05),
                   Text(
-                    "2021",
+                    releasedate ?? "Unknown",
                     style: TextStyle(
                       color: AppColors.lightGrey,
                       fontSize: width * 0.03,
@@ -128,7 +161,7 @@ class DetailScreen extends StatelessWidget {
                   Image.asset(IconsManager.vector, width: width * 0.015),
                   Image.asset(IconsManager.clockIcon, width: width * 0.05),
                   Text(
-                    "148 Minutes",
+                    runtime != null ? "$runtime minutes" : "Unknown",
                     style: TextStyle(
                       color: AppColors.lightGrey,
                       fontSize: width * 0.03,
@@ -138,7 +171,7 @@ class DetailScreen extends StatelessWidget {
                   Image.asset(IconsManager.vector, width: width * 0.015),
                   Image.asset(IconsManager.ticketIcon, width: width * 0.05),
                   Text(
-                    "Action",
+                    "Genre",
                     style: TextStyle(
                       color: AppColors.lightGrey,
                       fontSize: width * 0.03,

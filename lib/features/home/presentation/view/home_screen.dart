@@ -78,6 +78,9 @@ class HomeScreen extends StatelessWidget {
                                     builder: (context) => DetailScreen(
                                       coverImage: trends.posterPath!,
                                       smallImage: trends.backdropPath!,
+                                      title: trends.title,
+                                      releasedate: trends.releaseDate,
+                                      runtime: trends.runtime,
                                       rate: trends.voteAverage.toString(),
                                     ),
                                   ),
