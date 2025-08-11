@@ -21,45 +21,45 @@ class _HomeLayoutState extends State<HomeLayout> {
         unselectedItemColor: AppColors.lightGrey,
         unselectedLabelStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          color: AppColors.lightGrey
+          color: AppColors.lightGrey,
         ),
         selectedItemColor: AppColors.lightBlue,
         selectedLabelStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: AppColors.lightBlue
+          fontWeight: FontWeight.bold,
+          color: AppColors.lightBlue,
         ),
         items: [
-            BottomNavigationBarItem(
-              label: AppStrings.home,
-              icon: Image.asset(IconsManager.homeIcon),
-              activeIcon: Image.asset(
-                IconsManager.homeIcon,
-                color: AppColors.lightBlue,
-              )
+          BottomNavigationBarItem(
+            label: AppStrings.home,
+            icon: Image.asset(IconsManager.homeIcon),
+            activeIcon: Image.asset(
+              IconsManager.homeIcon,
+              color: AppColors.lightBlue,
             ),
-            BottomNavigationBarItem(
-              label: AppStrings.search,
-              icon: Image.asset(IconsManager.searchIcon),
-              activeIcon: Image.asset(
-                IconsManager.searchIcon,
-                color: AppColors.lightBlue,
-              )
+          ),
+          BottomNavigationBarItem(
+            label: AppStrings.search,
+            icon: Image.asset(IconsManager.searchIcon),
+            activeIcon: Image.asset(
+              IconsManager.searchIcon,
+              color: AppColors.lightBlue,
             ),
-            BottomNavigationBarItem(
-              label: AppStrings.watchList,
-              icon: Image.asset(IconsManager.saveIcon),
-              activeIcon: Image.asset(
-                IconsManager.saveIcon,
-                color: AppColors.lightBlue,
-              )
-            )
-          ],
+          ),
+          BottomNavigationBarItem(
+            label: AppStrings.watchList,
+            icon: Image.asset(IconsManager.saveIcon),
+            activeIcon: Image.asset(
+              IconsManager.saveIcon,
+              color: AppColors.lightBlue,
+            ),
+          ),
+        ],
         backgroundColor: AppColors.mainColor,
         currentIndex: currentIndex,
-        onTap: (value){
-            setState(() {
-              currentIndex = value;
-            });
+        onTap: (value) {
+          setState(() {
+            currentIndex = value;
+          });
         },
       ),
       body: Padding(
