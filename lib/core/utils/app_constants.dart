@@ -7,5 +7,6 @@ class AppConstants {
   static const String topRatedMovieEndPoint = "/3/movie/top_rated";
   static const String popularMoviesEndPoint = "/3/movie/popular";
   static const String movieDetailsEndPoint = "/3/movie";
+  static const String searchEndPoint = "/3/search/movie";
   static const String imageBaseUrl = "https://image.tmdb.org/t/p/original";
 }

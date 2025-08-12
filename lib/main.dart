@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/features/splash/presentation/splash_screen.dart';
-import 'core/Di/di.config.dart';
 import 'core/DI/di.dart';
 
 void main() async {
@@ -22,7 +21,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightBlue),
       ),
-
       home: const SplashScreen(),
     );
   }

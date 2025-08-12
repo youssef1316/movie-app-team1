@@ -1,12 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:movie_cellula/features/home/domain/usecase/get_now_playing_movies.dart';
+import 'package:movie_cellula/features/home/domain/usecase/get_popular_movies.dart';
+import 'package:movie_cellula/features/home/domain/usecase/get_top_rated_movies.dart';
+import 'package:movie_cellula/features/home/domain/usecase/get_trend_movies.dart';
+import 'package:movie_cellula/features/home/domain/usecase/get_upcoming_movies.dart';
 import 'home_event.dart';
 import 'home_state.dart';
-import 'package:movie_cellula/domain/usecase/get_top_rated_movies.dart';
-import 'package:movie_cellula/domain/usecase/get_now_playing_movies.dart';
-import 'package:movie_cellula/domain/usecase/get_popular_movies.dart';
-import 'package:movie_cellula/domain/usecase/get_upcoming_movies.dart';
-import 'package:movie_cellula/domain/usecase/get_trend_movies.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetTopRatedMoviesUseCase topRatedMovies;

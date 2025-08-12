@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_cellula/core/entities/movie.dart';
 import 'package:movie_cellula/core/widgets/main_movie_card.dart';
 import 'package:movie_cellula/features/detail/presentation/view/detail_screen.dart';
-import 'package:movie_cellula/domain/entities/movie.dart';
 
 class PopularTab extends StatelessWidget {
   final List <Movie> movies;

@@ -1,4 +1,6 @@
-import 'package:movie_cellula/domain/entities/genre.dart';
+
+import 'genre.dart';
+
 /// adult : false
 /// backdrop_path : "/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg"
 /// belongs_to_collection : null

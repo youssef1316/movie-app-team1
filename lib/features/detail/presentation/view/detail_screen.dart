@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_cellula/core/utils/assets_manager.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
-import 'package:movie_cellula/features/detail/presentation/widgets/movie_tab_section.dart';
+import 'package:movie_cellula/features/detail/presentation/view/widgets/movie_tab_section.dart';
 
 class DetailScreen extends StatelessWidget {
   final String coverImage;

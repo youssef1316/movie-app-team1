@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_cellula/domain/entities/movie.dart';
-import 'package:movie_cellula/domain/entities/movie_details.dart';
+import 'package:movie_cellula/core/entities/movie.dart';
+import 'package:movie_cellula/core/entities/movie_details.dart';
+
 
 abstract class BaseMovieRepository{
   Future<Either<String, List<Movie>?>> getTendMovies();
@@ -9,6 +10,5 @@ abstract class BaseMovieRepository{
   Future<Either<String, List<Movie>?>> getUpcomingMovies();
   Future<Either<String, List<Movie>?>> getPopularMovies();
   Future<Either<String,MovieDetails>> getMovieDetails(int? movieId);
-
 }
 

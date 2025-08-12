@@ -1,4 +1,5 @@
-import 'package:movie_cellula/domain/entities/movie_details.dart';
+
+import 'package:movie_cellula/core/entities/movie_details.dart';
 
 import 'genre_model.dart';
 

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:injectable/injectable.dart';
-import 'package:movie_cellula/data/models/movie_details_model.dart';
-import 'package:movie_cellula/data/response/MovieResponse.dart';
+import 'package:movie_cellula/core/models/movie_details_model.dart';
+import 'package:movie_cellula/core/response/movie_response.dart';
 
 import '../models/movie_model.dart';
 import '../../core/utils/app_constants.dart';
@@ -145,6 +145,33 @@ class ApiManager {
         var json = jsonDecode(response.body);
         var movieDetails = MovieDetailsModel.fromJson(json);
         return movieDetails;
+      } else {
+        throw HttpException("Error: ${response.statusCode}");
+      }
+    } on SocketException {
+      throw Exception("No Internet Connection.");
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+  }
+
+  Future<List<MovieModel>> searchMovie(String movieName) async{
+    try {
+      var url = Uri.https(
+        AppConstants.baseUrl,
+        AppConstants.searchEndPoint,
+        {
+          "api_key": AppConstants.apiKey,
+          "query": movieName
+        },
+      );
+
+      var response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        var json = jsonDecode(response.body);
+        var moviesResponse = MovieResponse.fromJson(json);
+        return moviesResponse.results ?? [];
       } else {
         throw HttpException("Error: ${response.statusCode}");
       }

@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_cellula/core/utils/app_constants.dart';
+import 'package:movie_cellula/core/entities/movie.dart';
 import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/core/utils/dimensions_manager.dart';
-import 'package:movie_cellula/domain/entities/movie.dart';
 
 class TopFiveCard extends StatelessWidget {
 

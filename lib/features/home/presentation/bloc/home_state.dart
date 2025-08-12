@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie_cellula/domain/entities/movie.dart';
+import 'package:movie_cellula/core/entities/movie.dart';
 
 abstract class HomeState extends Equatable {
   @override

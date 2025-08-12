@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:movie_cellula/data/api/api_manager.dart';
-import 'package:movie_cellula/domain/entities/movie.dart';
-import 'package:movie_cellula/domain/entities/movie_details.dart';
+import 'package:movie_cellula/core/api/api_manager.dart';
+import 'package:movie_cellula/core/entities/movie.dart';
+import 'package:movie_cellula/core/entities/movie_details.dart';
 
 abstract class BaseMovieDataSource {
   Future<List<Movie>?> getTendMovies();

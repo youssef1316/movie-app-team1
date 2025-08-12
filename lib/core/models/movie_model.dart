@@ -1,4 +1,4 @@
-import 'package:movie_cellula/domain/entities/movie.dart';
+import 'package:movie_cellula/core/entities/movie.dart';
 
 /// adult : false
 /// backdrop_path : "/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg"

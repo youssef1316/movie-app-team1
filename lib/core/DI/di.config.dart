@@ -12,16 +12,17 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../data/api/api_manager.dart' as _i442;
-import '../../data/dataSource/movie_data_source.dart' as _i1021;
-import '../../data/repositoryImp/movie_repo_imp.dart' as _i336;
-import '../../domain/repository/movie_repo.dart' as _i372;
-import '../../domain/usecase/get_movie_details.dart' as _i384;
-import '../../domain/usecase/get_now_playing_movies.dart' as _i62;
-import '../../domain/usecase/get_popular_movies.dart' as _i1041;
-import '../../domain/usecase/get_top_rated_movies.dart' as _i617;
-import '../../domain/usecase/get_trend_movies.dart' as _i98;
-import '../../domain/usecase/get_upcoming_movies.dart' as _i430;
+import '../../features/home/data/dataSource/movie_data_source.dart' as _i1021;
+import '../../features/home/data/repositoryImp/movie_repo_imp.dart' as _i336;
+import '../../features/home/domain/repository/movie_repo.dart' as _i372;
+import '../../features/home/domain/usecase/get_movie_details.dart' as _i384;
+import '../../features/home/domain/usecase/get_now_playing_movies.dart' as _i62;
+import '../../features/home/domain/usecase/get_popular_movies.dart' as _i1041;
+import '../../features/home/domain/usecase/get_top_rated_movies.dart' as _i617;
+import '../../features/home/domain/usecase/get_trend_movies.dart' as _i98;
+import '../../features/home/domain/usecase/get_upcoming_movies.dart' as _i430;
+import '../api/api_manager.dart' as _i442;
+
 import '../../features/home/presentation/bloc/home_bloc.dart' as _i999;
 
 extension GetItInjectableX on _i174.GetIt {
