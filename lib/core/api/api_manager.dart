@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:injectable/injectable.dart';
 import 'package:movie_cellula/core/models/movie_details_model.dart';
-import 'package:movie_cellula/core/response/movie_response.dart';
+import 'package:movie_cellula/core/models/movie_response.dart';
 
 import '../models/movie_model.dart';
 import '../../core/utils/app_constants.dart';
