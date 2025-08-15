@@ -1,27 +1,28 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_cellula/core/entities/movie.dart';
+
 import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/core/utils/dimensions_manager.dart';
 
-class TopFiveCard extends StatelessWidget {
+import '../../features/home/domain/entities/movie.dart';
+import '../navigation/routes_manager/routes.dart';
 
+
+class TopFiveCard extends StatelessWidget {
   final String numberTag;
   final Movie movie;
-  final void Function()? onTap;
 
-  const TopFiveCard({
-    super.key,
-    required this.movie,
-    required this.numberTag,
-    required this.onTap,
-  });
+  const TopFiveCard({super.key, required this.movie, required this.numberTag});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return InkWell(
+      onTap: () => Navigator.pushNamed(
+        context,
+        Routes.movieDetailRoute,
+        arguments: movie,
+      ),
       child: Stack(
         alignment: AlignmentDirectional.bottomStart,
 
@@ -38,10 +39,11 @@ class TopFiveCard extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: "https://image.tmdb.org/t/p/w500${movie.posterPath}",
                 fit: BoxFit.cover,
-                placeholder: (context, url) => CircularProgressIndicator(),
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
-            )
+            ),
           ),
           Text(
             numberTag,

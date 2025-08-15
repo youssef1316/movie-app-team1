@@ -1,5 +1,6 @@
 
-import 'genre.dart';
+
+import '../../../home/domain/entities/genre.dart';
 
 /// adult : false
 /// backdrop_path : "/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg"

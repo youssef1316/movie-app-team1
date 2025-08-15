@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:injectable/injectable.dart';
-import 'package:movie_cellula/core/models/movie_details_model.dart';
-import 'package:movie_cellula/core/models/movie_response.dart';
-
-import '../models/movie_model.dart';
 import '../../core/utils/app_constants.dart';
 import 'package:http/http.dart' as http;
+
+import '../../features/home/data/models/movie_details_model.dart';
+import '../../features/home/data/models/movie_model.dart';
+import '../../features/home/data/models/movie_response.dart';
 
 @singleton
 class ApiManager {
@@ -135,8 +134,8 @@ class ApiManager {
     try {
       var url = Uri.https(
         AppConstants.baseUrl,
-        AppConstants.movieDetailsEndPoint,
-        {"api_key": AppConstants.apiKey, "movie_id": movieId},
+        "${AppConstants.movieDetailsEndPoint}/$movieId",
+        { "api_key": AppConstants.apiKey },
       );
 
       var response = await http.get(url);

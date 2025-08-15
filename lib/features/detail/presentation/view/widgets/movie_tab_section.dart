@@ -15,6 +15,7 @@ class MovieTabSection extends StatelessWidget {
       length: 3,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           const TabBar(
             labelColor: Colors.white,

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_cellula/core/entities/movie_details.dart';
+import 'package:movie_cellula/features/detail/domian/entites/movie_details.dart';
 import 'package:movie_cellula/features/home/domain/repository/movie_repo.dart';
 
 @injectable
@@ -11,3 +11,4 @@ class GetMovieDetailsUseCase {
     return repository.getMovieDetails(movieId);
   }
 }
+

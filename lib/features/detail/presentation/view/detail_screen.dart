@@ -1,28 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:movie_cellula/core/utils/app_constants.dart';
 import 'package:movie_cellula/core/utils/assets_manager.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/features/detail/presentation/view/widgets/movie_tab_section.dart';
+import 'package:movie_cellula/features/detail/presentation/view/widgets/rate_widget.dart';
+
+import '../../../home/domain/entities/movie.dart';
 
 class DetailScreen extends StatelessWidget {
-  final String coverImage;
-  final String smallImage;
-  final String rate;
-  final String? title;
+  final Movie movie;
 
-  final String? releasedate;
-  final int? runtime;
-
-
-  const DetailScreen({
-    super.key,
-    required this.coverImage,
-    required this.smallImage,
-    required this.rate,
-    required this.title,
-    required this.releasedate,
-    required this.runtime
-  });
-
+  const DetailScreen({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -66,53 +56,51 @@ class DetailScreen extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 // Movie Cover
-                Image.network(
-                  coverImage,
+                CachedNetworkImage(
+                  imageUrl:
+                      "${AppConstants.imageBaseUrl}/${movie.backdropPath}",
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: height * 0.3,
-                  errorBuilder: (context, error, stackTrace){
-                    return Container(
-                      width: double.infinity,
-                      height: height * 0.3,
-                      color: Colors.grey.shade800,
-                      child: const Center(
-                        child: Icon(Icons.broken_image, color: Colors.white70, size: 40),
-                      ),
-                    );
-                  },
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Center(
+                    child: Icon(
+                      Icons.broken_image,
+                      color: Colors.white70,
+                      size: 40,
+                    ),
+                  ),
                 ),
                 // Small Photo
                 Positioned(
                   left: width * 0.07,
                   top: height * 0.22,
-                  child: Image.network(
-                    smallImage,
-                    height: height * 0.15,
-                    width: width * 0.25,
-                    fit: BoxFit.fill,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          width: double.infinity,
-                          height: height * 0.3,
-                          color: Colors.grey.shade800,
-                          child: const Center(
-                            child: Icon(
-                                Icons.broken_image, color: Colors.white70,
-                                size: 40),
-                          ),
-                        );
-                    }
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          "${AppConstants.imageBaseUrl}/${movie.posterPath}",
+                      height: height * 0.16,
+                      width: width * 0.25,
+                      fit: BoxFit.fill,
+                      placeholder: (context, url) =>
+                          Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => const Center(
+                        child: Icon(
+                          Icons.broken_image,
+                          color: Colors.white70,
+                          size: 40,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 // Rate
                 Positioned(
                   right: width * 0.03,
-                  top: height * 0.25,
-                  child: Image.asset(
-                    "assets/images/Rate.png",
-                    width: width * 0.2,
-                  ),
+                  top: height * 0.26,
+                  child: RateWidget(rate: movie.voteAverage!.toStringAsFixed(1)),
                 ),
                 //  Movie Name
                 Positioned(
@@ -122,22 +110,22 @@ class DetailScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        title ?? "No title",
+                        movie.title ?? "No title",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: width * 0.05,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      if (releasedate != null)
+                      if (movie.releaseDate != null)
                         Text(
-                          releasedate!,
+                          movie.releaseDate!,
                           style: TextStyle(
                             color: Colors.white70,
                             fontSize: width * 0.035,
-                            fontWeight: FontWeight.w500
+                            fontWeight: FontWeight.w500,
                           ),
-                        )
+                        ),
                     ],
                   ),
                 ),
@@ -151,7 +139,7 @@ class DetailScreen extends StatelessWidget {
                 children: [
                   Image.asset(IconsManager.calenderIcon, width: width * 0.05),
                   Text(
-                    releasedate ?? "Unknown",
+                    movie.releaseDate ?? "Unknown",
                     style: TextStyle(
                       color: AppColors.lightGrey,
                       fontSize: width * 0.03,
@@ -161,7 +149,9 @@ class DetailScreen extends StatelessWidget {
                   Image.asset(IconsManager.vector, width: width * 0.015),
                   Image.asset(IconsManager.clockIcon, width: width * 0.05),
                   Text(
-                    runtime != null ? "$runtime minutes" : "Unknown",
+                    movie.runtime != null
+                        ? "${movie.runtime} minutes"
+                        : "Unknown",
                     style: TextStyle(
                       color: AppColors.lightGrey,
                       fontSize: width * 0.03,

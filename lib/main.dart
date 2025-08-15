@@ -3,6 +3,8 @@ import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/features/splash/presentation/splash_screen.dart';
 import 'core/DI/di.dart';
+import 'core/navigation/routes_manager/routes.dart';
+import 'core/navigation/routes_manager/routes_generator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightBlue),
       ),
-      home: const SplashScreen(),
+      onGenerateRoute: RoutesGenerator.getRoute,
+      initialRoute: Routes.splashRoute,
     );
   }
 }

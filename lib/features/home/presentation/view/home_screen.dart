@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt <HomeBloc>()..add(FetchHomeData()),
+      create: (context) => HomeBloc(topRatedMovies: getIt(), nowPlayingMovies: getIt(), popularMovies: getIt(), upcomingMovies: getIt(), trendMovies: getIt())..add(FetchHomeData()),
       child: SafeArea(
         child: SingleChildScrollView(
           physics: NeverScrollableScrollPhysics(),
@@ -71,21 +71,6 @@ class HomeScreen extends StatelessWidget {
                             child: TopFiveCard(
                               movie:trends,
                               numberTag: (index + 1).toString(),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => DetailScreen(
-                                      coverImage: trends.posterPath!,
-                                      smallImage: trends.backdropPath!,
-                                      title: trends.title,
-                                      releasedate: trends.releaseDate,
-                                      runtime: trends.runtime,
-                                      rate: trends.voteAverage.toString(),
-                                    ),
-                                  ),
-                                );
-                              },
                             ),
                           );
                         },

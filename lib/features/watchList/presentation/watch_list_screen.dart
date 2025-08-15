@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_cellula/core/models/watchListMovie.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
+
+import '../../home/data/models/watchListMovie.dart';
 
 
 class WatchlistScreen extends StatelessWidget {

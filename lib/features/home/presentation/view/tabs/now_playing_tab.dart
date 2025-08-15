@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_cellula/core/entities/movie.dart';
 import 'package:movie_cellula/core/widgets/main_movie_card.dart';
-import 'package:movie_cellula/features/detail/presentation/view/detail_screen.dart';
+import '../../../../../core/navigation/routes_manager/routes.dart';
+import '../../../domain/entities/movie.dart';
+
 
 class NowPlayingTab extends StatelessWidget {
   final List <Movie> movies;
@@ -24,18 +25,11 @@ class NowPlayingTab extends StatelessWidget {
         return MainMovieCard(
           imageUrl: "https://image.tmdb.org/t/p/w500${movie.posterPath}",
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailScreen(
-                  coverImage: "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
-                  smallImage: "https://image.tmdb.org/t/p/w500${movie.posterPath}",
-                  title: movie.title,
-                  releasedate: movie.releaseDate,
-                  runtime: movie.runtime,
-                  rate: movie.voteAverage.toString(),
-                ),
-              ),
+            Navigator.pushNamed(
+                context,
+                Routes.movieDetailRoute,
+                arguments: movie,
+
             );
           },
         );

@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_cellula/core/entities/movie.dart';
 import 'package:movie_cellula/features/search/data/dataSource/search_data_source.dart';
 import 'package:movie_cellula/features/search/domain/repository/search_repository.dart';
+
+import '../../../home/domain/entities/movie.dart';
 
 @Injectable(as: BaseSearchRepository)
 class SearchRepository extends BaseSearchRepository {

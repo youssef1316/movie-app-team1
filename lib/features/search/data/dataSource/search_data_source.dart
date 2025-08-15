@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:movie_cellula/core/api/api_manager.dart';
-import 'package:movie_cellula/core/entities/movie.dart';
+
+import '../../../home/domain/entities/movie.dart';
 
 abstract class BaseSearchDataSource {
   Future<List<Movie>?> searchMovie(String movieName);

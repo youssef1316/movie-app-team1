@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_cellula/core/entities/movie.dart';
-import 'package:movie_cellula/core/entities/movie_details.dart';
+import 'package:movie_cellula/features/detail/domian/entites/movie_details.dart';
 import 'package:movie_cellula/features/home/data/dataSource/movie_data_source.dart';
+import '../../domain/entities/movie.dart';
 import '../../domain/repository/movie_repo.dart';
 
 @Injectable(as: BaseMovieRepository)
