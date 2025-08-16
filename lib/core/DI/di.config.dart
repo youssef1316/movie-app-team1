@@ -25,6 +25,15 @@ import '../api/api_manager.dart' as _i442;
 
 import '../../features/home/presentation/bloc/home_bloc.dart' as _i999;
 
+import '../../features/watchList/data/dataSources/watchList_local_dataSource.dart' as _i1042;
+import '../../features/watchList/data/repo_impl/watch_list_repo.dart' as _i1043;
+import '../../features/watchList/domain/repos/watchlistrepo.dart' as _i1044;
+import '../../features/watchList/domain/usecases/get_watchlist.dart' as _i1045;
+import '../../features/watchList/domain/usecases/add_to_watchlist.dart' as _i1046;
+import '../../features/watchList/domain/usecases/remove_from_watchlist.dart' as _i1047;
+import '../../features/watchList/domain/usecases/clear_watchlist.dart' as _i1048;
+import '../../features/watchList/presentation/bloc/watchlist_bloc.dart' as _i1049;
+
 extension GetItInjectableX on _i174.GetIt {
   _i174.GetIt init({
     String? environment,
@@ -63,6 +72,32 @@ extension GetItInjectableX on _i174.GetIt {
       popularMovies: gh<_i1041.GetPopularMoviesUseCase>(),
       upcomingMovies: gh<_i430.GetUpcomingMoviesUseCase>(),
       trendMovies: gh<_i98.GetTrendMoviesUseCase>(),
+    ));
+
+    gh.factory<_i1042.WatchlistLocalDataSource>(
+          () => _i1042.WatchlistLocalDataSourceImpl(),
+    );
+    gh.factory<_i1044.WatchListRepo>(
+          () => _i1043.WatchlistRepositoryImpls(gh<_i1042.WatchlistLocalDataSource>()),
+    );
+    gh.factory<_i1045.GetWatchList>(
+          () => _i1045.GetWatchList(gh<_i1044.WatchListRepo>()),
+    );
+    gh.factory<_i1046.AddToWatchList>(
+          () => _i1046.AddToWatchList(gh<_i1044.WatchListRepo>()),
+    );
+    gh.factory<_i1047.RemoveFromWatchlist>(
+          () => _i1047.RemoveFromWatchlist(gh<_i1044.WatchListRepo>()),
+    );
+    gh.factory<_i1048.ClearWatchlist>(
+          () => _i1048.ClearWatchlist(gh<_i1044.WatchListRepo>()),
+    );
+
+    gh.factory<_i1049.WatchlistBloc>(() => _i1049.WatchlistBloc(
+      getWatchlist: gh<_i1045.GetWatchList>(),
+      addToWatchlist: gh<_i1046.AddToWatchList>(),
+      removeFromWatchlist: gh<_i1047.RemoveFromWatchlist>(),
+      clearWatchlist: gh<_i1048.ClearWatchlist>(),
     ));
 
     return this;
