@@ -1,6 +1,6 @@
 
 
-import '../../domain/entities/genre.dart';
+import '../../domian/entites/genre.dart';
 
 /// id : 18
 /// name : "Drama"

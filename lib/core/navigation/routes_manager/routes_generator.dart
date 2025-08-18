@@ -15,11 +15,11 @@ class RoutesGenerator {
         return MaterialPageRoute(builder: (_) => SplashScreen());
       }
 
-      case Routes.movieDetailRoute:
-        {
-          return MaterialPageRoute(
-              builder: (_) => DetailScreen(movie: settings.arguments as Movie));
-        }
+      // case Routes.movieDetailRoute:
+      //   {
+      //     return MaterialPageRoute(
+      //         builder: (_) => DetailScreen(movie: settings.arguments as Movie));
+      //   }
       case Routes.homeLayoutRoute:
         {
           return MaterialPageRoute(

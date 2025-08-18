@@ -14,7 +14,4 @@ class SearchMoviesUseCase {
   }
 }
 
-// class MovieSearchText {
-//   final String movieName;
-//   const MovieSearchText(this.movieName);
-// }
+

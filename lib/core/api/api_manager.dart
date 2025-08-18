@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import '../../core/utils/app_constants.dart';
 import 'package:http/http.dart' as http;
 
-import '../../features/home/data/models/movie_details_model.dart';
+import '../../features/detail/data/models/movie_details_model.dart';
 import '../../features/home/data/models/movie_model.dart';
 import '../../features/home/data/models/movie_response.dart';
 

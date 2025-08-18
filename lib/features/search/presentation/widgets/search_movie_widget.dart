@@ -10,7 +10,7 @@ import 'package:movie_cellula/features/search/presentation/widgets/movie_info_wi
 import '../../../../core/utils/app_constants.dart';
 import '../../../../core/utils/assets_manager.dart';
 import '../../../../core/utils/colors_manager.dart';
-
+import '../../../detail/domian/entites/genre.dart';
 
 class SearchMovieWidget extends StatelessWidget {
   final int movieId;
@@ -90,7 +90,7 @@ class SearchMovieWidget extends StatelessWidget {
                           ],
                         ),
                         MovieInfoWidget(
-                          text: "genre",
+                          text: safeGenre(movie.genres) ?? "",
                           asset: SvgsManager.genreSvg,
                         ),
                         MovieInfoWidget(
@@ -98,7 +98,7 @@ class SearchMovieWidget extends StatelessWidget {
                           asset: SvgsManager.calendarSvg,
                         ),
                         MovieInfoWidget(
-                          text: movie.runtime.toString(),
+                          text: "${movie.runtime.toString()} min",
                           asset: SvgsManager.clockSvg,
                         ),
                       ],
@@ -130,4 +130,9 @@ String extractYear(String? movieDate) {
   } catch (e) {
     return "Unknown";
   }
+}
+
+String? safeGenre(List<Genre>? genres) {
+  if (genres == null || genres.isEmpty) return "Unknown";
+  return genres.length > 1 ? genres[1].name : genres.first.name;
 }
