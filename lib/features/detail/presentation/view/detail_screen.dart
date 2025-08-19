@@ -6,7 +6,8 @@ import 'package:movie_cellula/features/detail/presentation/view/widgets/movie_ta
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:movie_cellula/features/watchList/presentation/bloc/watchlist_bloc.dart';
-import 'package:movie_cellula/features/watchList/presentation/bloc/watch_list_event.dart' as event;
+import 'package:movie_cellula/features/watchList/presentation/bloc/watch_list_event.dart'
+    as event;
 import 'package:movie_cellula/features/watchList/domain/entities/movie.dart';
 import 'package:movie_cellula/core/navigation/bottom_nav_bar_routes.dart';
 
@@ -49,12 +50,7 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
-                      onPressed: () => Navigator.pushReplacement(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (_) => BottomNavBarRoutes.routes[0],
-                        ),
-                      ),
+                      onPressed: () => Navigator.pop(context),
                     ),
                     Text(
                       "Detail",
@@ -77,7 +73,9 @@ class DetailScreen extends StatelessWidget {
                               title: title ?? "No title",
                               rating: double.tryParse(rate) ?? 0.0,
                               year: releasedate ?? "Unknown",
-                              duration: runtime != null ? "$runtime minutes" : "Unknown",
+                              duration: runtime != null
+                                  ? "$runtime minutes"
+                                  : "Unknown",
                               poster: coverImage,
                             ),
                           ),
@@ -88,6 +86,8 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: height * 0.015),
+
+              // Stack: cover image + poster + rate
               Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -102,7 +102,11 @@ class DetailScreen extends StatelessWidget {
                         height: height * 0.3,
                         color: Colors.grey.shade800,
                         child: const Center(
-                          child: Icon(Icons.broken_image, color: Colors.white70, size: 40),
+                          child: Icon(
+                            Icons.broken_image,
+                            color: Colors.white70,
+                            size: 40,
+                          ),
                         ),
                       );
                     },
@@ -121,7 +125,11 @@ class DetailScreen extends StatelessWidget {
                           height: height * 0.3,
                           color: Colors.grey.shade800,
                           child: const Center(
-                            child: Icon(Icons.broken_image, color: Colors.white70, size: 40),
+                            child: Icon(
+                              Icons.broken_image,
+                              color: Colors.white70,
+                              size: 40,
+                            ),
                           ),
                         );
                       },
@@ -135,35 +143,41 @@ class DetailScreen extends StatelessWidget {
                       width: width * 0.2,
                     ),
                   ),
-                  Positioned(
-                    right: width * 0.23,
-                    top: height * 0.3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title ?? "No title",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: width * 0.05,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        if (releasedate != null)
-                          Text(
-                            releasedate!,
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: width * 0.035,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
-              SizedBox(height: height * 0.09),
+
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.05,
+                  vertical: height * 0.015,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title ?? "No title",
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: width * 0.05,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (releasedate != null)
+                      Text(
+                        releasedate!,
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: width * 0.035,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              SizedBox(height: height * 0.005),
+
+              // Info Row (date, runtime, genre)
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.08),
                 child: Row(
@@ -201,7 +215,7 @@ class DetailScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: height * 0.01),
+              SizedBox(height: height * 0.015),
               MovieTabSection(),
             ],
           ),
