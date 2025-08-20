@@ -1,5 +1,6 @@
 
-import 'package:movie_cellula/core/entities/genre.dart';
+
+import '../../domian/entites/genre.dart';
 
 /// id : 18
 /// name : "Drama"

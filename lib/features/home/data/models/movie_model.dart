@@ -1,4 +1,6 @@
-import 'package:movie_cellula/core/entities/movie.dart';
+
+
+import '../../domain/entities/movie.dart';
 
 /// adult : false
 /// backdrop_path : "/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg"
@@ -31,10 +33,12 @@ class MovieModel {
     this.video,
     this.voteAverage,
     this.voteCount,
+    this.runtime
   });
 
   MovieModel.fromJson(dynamic json) {
     adult = json['adult'];
+    runtime = json['runtime'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'] != null ? json['genre_ids'].cast<int>() : [];
     id = json['id'];
@@ -63,10 +67,12 @@ class MovieModel {
   bool? video;
   double? voteAverage;
   int? voteCount;
+  int? runtime;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['adult'] = adult;
+    map['runtime'] = runtime;
     map['backdrop_path'] = backdropPath;
     map['genre_ids'] = genreIds;
     map['id'] = id;
@@ -99,6 +105,7 @@ class MovieModel {
       video: video,
       voteAverage: voteAverage,
       voteCount: voteCount,
+      runtime: runtime
     );
   }
 }

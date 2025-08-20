@@ -4,6 +4,8 @@ import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:movie_cellula/features/splash/presentation/splash_screen.dart';
 import 'core/DI/di.dart';
+import 'core/navigation/routes_manager/routes.dart';
+import 'core/navigation/routes_manager/routes_generator.dart';
 
 import 'features/watchList/data/dataSources/watchList_local_dataSource.dart';
 import 'features/watchList/data/repo_impl/watch_list_repo.dart';
@@ -45,7 +47,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightBlue),
       ),
-      home: const SplashScreen(),
+      onGenerateRoute: RoutesGenerator.getRoute,
+      initialRoute: Routes.splashRoute,
     );
   }
 }
