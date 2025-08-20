@@ -1,5 +1,3 @@
-
-
 import '../../domain/entities/movie.dart';
 
 /// adult : false

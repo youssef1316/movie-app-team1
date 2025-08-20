@@ -11,6 +11,7 @@ class MovieTabSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(overview);
     return DefaultTabController(
       length: 3,
       child: Column(

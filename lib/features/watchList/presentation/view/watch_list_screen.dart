@@ -43,10 +43,7 @@ class WatchlistScreen extends StatelessWidget {
           centerTitle: true,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => BottomNavBarRoutes.routes[0]),
-            ),
+            onPressed: () => Navigator.pop(context)
           ),
         ),
         body: BlocBuilder<WatchlistBloc, WatchlistState>(

@@ -4,6 +4,7 @@ import 'package:movie_cellula/features/detail/presentation/view/detail_screen.da
 import 'package:movie_cellula/features/home/presentation/view/home_layout.dart';
 import '../../../features/home/domain/entities/movie.dart';
 import '../../../features/splash/presentation/splash_screen.dart';
+import 'package:movie_cellula/core/utils/app_constants.dart';
 
 
 
@@ -15,11 +16,22 @@ class RoutesGenerator {
         return MaterialPageRoute(builder: (_) => SplashScreen());
       }
 
-      // case Routes.movieDetailRoute:
-      //   {
-      //     return MaterialPageRoute(
-      //         builder: (_) => DetailScreen(movie: settings.arguments as Movie));
-      //   }
+      case Routes.movieDetailRoute:
+        {
+          final movie = settings.arguments as Movie;
+          return MaterialPageRoute(
+            builder: (_) => DetailScreen(
+              coverImage: "https://image.tmdb.org/t/p/w500${movie.posterPath}",
+              smallImage: "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
+              title: movie.title,
+              releasedate: movie.releaseDate,
+              runtime: movie.runtime,
+              rate: movie.voteAverage.toString(),
+              overview: movie.overview,
+
+            ),
+          );
+        }
       case Routes.homeLayoutRoute:
         {
           return MaterialPageRoute(
