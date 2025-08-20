@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_cellula/core/navigation/bottom_nav_bar_routes.dart';
+import 'package:movie_cellula/core/navigation/routes_manager/routes.dart';
 import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/assets_manager.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
@@ -17,6 +18,26 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.mainColor,
+      floatingActionButton: MaterialButton(
+        onPressed: (){
+          Navigator.pushNamed(context, Routes.geminiRoute);
+        },
+        color: AppColors.lightBlue,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16)
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 5),
+          child: Text(
+            AppStrings.getRecommendation,
+            style: TextStyle(
+              color: AppColors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: AppColors.lightGrey,
         unselectedLabelStyle: TextStyle(
