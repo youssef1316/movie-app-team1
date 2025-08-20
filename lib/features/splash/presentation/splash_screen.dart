@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_cellula/core/navigation/routes_manager/routes.dart';
 import 'package:movie_cellula/core/utils/assets_manager.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
-import 'package:movie_cellula/features/home/presentation/view/home_layout.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

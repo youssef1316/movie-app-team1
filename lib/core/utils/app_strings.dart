@@ -9,4 +9,5 @@ abstract class AppStrings {
   static const String upcomingTab = "Upcoming";
   static const String topRatedTab = "Top rated";
   static const String popularTab = "Popular";
+  static const String getRecommendation = "Get Recommendation";
 }
