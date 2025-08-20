@@ -42,11 +42,8 @@ class WatchlistScreen extends StatelessWidget {
           ),
           centerTitle: true,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-            onPressed: () => Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => BottomNavBarRoutes.routes[0]),
-            ),
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+              onPressed: () => Navigator.pop(context)
           ),
         ),
         body: BlocBuilder<WatchlistBloc, WatchlistState>(
@@ -198,7 +195,7 @@ class _WatchlistMovieRow extends StatelessWidget {
         ),
         IconButton(icon: Icon(Icons.delete, color: Colors.red, size:screenWidth*0.06),
           onPressed: (){
-          BlocProvider.of<WatchlistBloc>(context).add(event.RemoveMovie(movie.title));
+            BlocProvider.of<WatchlistBloc>(context).add(event.RemoveMovie(movie.title));
           },
         )
       ],
