@@ -10,6 +10,7 @@ import 'package:movie_cellula/features/watchList/presentation/bloc/watchlist_blo
 import 'package:movie_cellula/features/watchList/presentation/bloc/watch_list_event.dart' as event;
 import 'package:movie_cellula/features/watchList/domain/entities/movie.dart';
 
+
 class DetailScreen extends StatelessWidget {
   final String coverImage;
   final String smallImage;
