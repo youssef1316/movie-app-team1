@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_cellula/features/watchList/presentation/bloc/watchlist_bloc.dart';
 import 'package:movie_cellula/features/watchList/presentation/bloc/watch_list_event.dart' as event;
 import 'package:movie_cellula/features/watchList/domain/entities/movie.dart';
-import 'package:movie_cellula/core/navigation/bottom_nav_bar_routes.dart';
 
 class DetailScreen extends StatelessWidget {
   final String coverImage;
