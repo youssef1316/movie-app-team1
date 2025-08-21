@@ -12,7 +12,6 @@ import '../../domain/usecases/add_to_watchlist.dart';
 import '../../domain/usecases/clear_watchlist.dart' as useCase;
 import '../../domain/usecases/get_watchlist.dart';
 import '../../domain/usecases/remove_from_watchlist.dart';
-import 'package:movie_cellula/core/navigation/bottom_nav_bar_routes.dart';
 
 class WatchlistScreen extends StatelessWidget {
   const WatchlistScreen({super.key});
