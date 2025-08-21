@@ -5,7 +5,7 @@ abstract class WatchlistEvent {}
 class LoadWatchlist extends WatchlistEvent {}
 
 class AddMovie extends WatchlistEvent {
-  final Movie movie;
+  final WishListMovie movie;
   AddMovie(this.movie);
 }
 

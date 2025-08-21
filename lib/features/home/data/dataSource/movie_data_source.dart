@@ -10,7 +10,7 @@ abstract class BaseMovieDataSource {
   Future<List<Movie>?> getTopRatedMovies();
   Future<List<Movie>?> getUpcomingMovies();
   Future<List<Movie>?> getPopularMovies();
-  Future<MovieDetails> getMovieDetails(int? movieId);
+
 }
 
 @Injectable(as: BaseMovieDataSource)
@@ -83,16 +83,5 @@ class MovieDataSource extends BaseMovieDataSource {
     }
   }
 
-  @override
-  Future<MovieDetails> getMovieDetails(int? movieId) async {
-    try {
-      var movieDetails = await api.getMovieDetails(movieId);
-      if (movieId == null) {
-        throw Exception("No movie details received from API.");
-      }
-      return movieDetails.toDomain();
-    } catch (e) {
-      throw Exception("Failed to fetch movie details: $e");
-    }
-  }
+
 }

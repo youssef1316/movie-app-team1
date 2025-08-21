@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../home/presentation/view/home_screen.dart';
+
 import '../../domain/entities/movie.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +12,7 @@ import '../../domain/usecases/add_to_watchlist.dart';
 import '../../domain/usecases/clear_watchlist.dart' as useCase;
 import '../../domain/usecases/get_watchlist.dart';
 import '../../domain/usecases/remove_from_watchlist.dart';
-import 'package:movie_cellula/core/navigation/bottom_nav_bar_routes.dart';
+
 
 class WatchlistScreen extends StatelessWidget {
   const WatchlistScreen({super.key});
@@ -88,7 +88,7 @@ class WatchlistScreen extends StatelessWidget {
 }
 
 class _WatchlistMovieRow extends StatelessWidget {
-  final Movie movie;
+  final WishListMovie movie;
   final double screenWidth;
   final double screenHeight;
 

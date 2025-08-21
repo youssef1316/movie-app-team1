@@ -4,8 +4,7 @@ const String svgPath = "assets/svgs";
 
 abstract class ImagesManager {
   static const String logoRoute = "$imagePath/popcorn.png";
-  static const String coverDetailsImage = "assets/images/image 2.png";
-  static const String smallDetailsImage = "assets/images/Rectangle 4.png";
+  static const String reviewAvatar = "$imagePath/avatar.png";
 }
 
 abstract class IconsManager {

@@ -5,7 +5,7 @@ import 'package:movie_cellula/features/detail/domian/usecsae/get_movie_details.d
 
 class MovieDetailsBloc extends Bloc<MovieDetailEvent, MovieDetailsState> {
   final GetMovieDetailsUseCase useCase;
-  MovieDetailsBloc(this.useCase) : super(MovieDetailsInitialState()) {
+  MovieDetailsBloc(this.useCase) : super(MovieDetailsLoadingState()) {
     on<GetMovieDetailsEvent>(getMovieDetails);
   }
 
@@ -13,7 +13,7 @@ class MovieDetailsBloc extends Bloc<MovieDetailEvent, MovieDetailsState> {
     GetMovieDetailsEvent event,
     Emitter<MovieDetailsState> emit,
   ) async {
-    emit(MovieDetailsInitialState());
+    emit(MovieDetailsLoadingState());
     try {
       emit(MovieDetailsLoadingState());
       final result = await useCase.invoke(event.movieId);

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:movie_cellula/features/detail/domian/entites/movie_details.dart';
+import 'package:movie_cellula/features/detail/presentation/view/widgets/cast_view.dart';
+import 'package:movie_cellula/features/detail/presentation/view/widgets/reviews_view.dart';
 
 class MovieTabSection extends StatelessWidget {
-  final String? overview;
+  final MovieDetails movieDetails;
 
-  const MovieTabSection({
-    super.key,
-    this.overview
-  });
+  const MovieTabSection({super.key, required this.movieDetails});
 
   @override
   Widget build(BuildContext context) {
-    print(overview);
     return DefaultTabController(
       length: 3,
       child: Column(
@@ -39,22 +37,18 @@ class MovieTabSection extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    overview ?? 'No overview available',
-                    style: const TextStyle(color: Colors.white, height: 1.5),
+                    movieDetails.overview ?? 'No overview available',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      height: 1.5,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-                const Center(
-                  child: Text(
-                    "Reviews content here",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const Center(
-                  child: Text(
-                    "Cast content here",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                MovieReviewsView(movieId: movieDetails.id),
+                MovieCastView(movieId: movieDetails.id,)
+                ,
               ],
             ),
           ),

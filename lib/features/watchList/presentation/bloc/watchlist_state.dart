@@ -10,7 +10,7 @@ class WatchlistInitial extends WatchlistState {}
 class WatchlistLoading extends WatchlistState {}
 
 class WatchlistLoaded extends WatchlistState {
-  final List<Movie> movies;
+  final List<WishListMovie> movies;
   const WatchlistLoaded(this.movies);
 }
 

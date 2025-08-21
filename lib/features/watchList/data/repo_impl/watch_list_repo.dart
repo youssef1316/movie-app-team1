@@ -12,7 +12,7 @@ class WatchlistRepositoryImpls implements WatchListRepo{
   Future<void> _persist(List<WatchListMovieModel> models) => local.saveAll(models);
 
   @override
-  Future<void> add(Movie movie) async {
+  Future<void> add(WishListMovie movie) async {
    final models = await _fetchModels();
    final exists = models.any((m) => m.title == movie.title);
    if(!exists) {
@@ -29,7 +29,7 @@ class WatchlistRepositoryImpls implements WatchListRepo{
   }
 
   @override
-  Future<List<Movie>> getWatchList() async {
+  Future<List<WishListMovie>> getWatchList() async {
     final models = await _fetchModels();
     return models.map((m) => m.toEntity()) .toList(growable: false);
   }

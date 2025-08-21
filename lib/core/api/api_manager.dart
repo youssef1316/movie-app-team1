@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:injectable/injectable.dart';
+import 'package:movie_cellula/features/detail/data/models/cast_response.dart';
+import 'package:movie_cellula/features/detail/data/models/review_model.dart';
+import 'package:movie_cellula/features/detail/data/models/reviews_response.dart';
 import '../../core/utils/app_constants.dart';
 import 'package:http/http.dart' as http;
 
@@ -135,7 +138,7 @@ class ApiManager {
       var url = Uri.https(
         AppConstants.baseUrl,
         "${AppConstants.movieDetailsEndPoint}/$movieId",
-        { "api_key": AppConstants.apiKey },
+        {"api_key": AppConstants.apiKey},
       );
 
       var response = await http.get(url);
@@ -154,16 +157,12 @@ class ApiManager {
     }
   }
 
-  Future<List<MovieModel>> searchMovie(String movieName) async{
+  Future<List<MovieModel>> searchMovie(String movieName) async {
     try {
-      var url = Uri.https(
-        AppConstants.baseUrl,
-        AppConstants.searchEndPoint,
-        {
-          "api_key": AppConstants.apiKey,
-          "query": movieName
-        },
-      );
+      var url = Uri.https(AppConstants.baseUrl, AppConstants.searchEndPoint, {
+        "api_key": AppConstants.apiKey,
+        "query": movieName,
+      });
 
       var response = await http.get(url);
 
@@ -171,6 +170,46 @@ class ApiManager {
         var json = jsonDecode(response.body);
         var moviesResponse = MovieResponse.fromJson(json);
         return moviesResponse.results ?? [];
+      } else {
+        throw HttpException("Error: ${response.statusCode}");
+      }
+    } on SocketException {
+      throw Exception("No Internet Connection.");
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+  }
+
+  Future<List<ReviewModel>?> getMovieReviews(int? movieId) async {
+    try {
+      var url = Uri.https(AppConstants.baseUrl, "/3/movie/$movieId/reviews", {
+        "api_key": AppConstants.apiKey,
+      });
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        var json = jsonDecode(response.body);
+        var reviewsResponse = ReviewsResponse.fromJson(json);
+        return reviewsResponse.reviews ?? [];
+      } else {
+        throw HttpException("Error: ${response.statusCode}");
+      }
+    } on SocketException {
+      throw Exception("No Internet Connection.");
+    } catch (e) {
+      throw Exception("Unexpected error: $e");
+    }
+  }
+
+  Future<CastResponse> getMovieCast(int? movieId) async {
+    try {
+      var url = Uri.https(AppConstants.baseUrl, "/3/movie/$movieId/credits", {
+        "api_key": AppConstants.apiKey,
+      });
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        var json = jsonDecode(response.body);
+        var castResponse = CastResponse.fromJson(json);
+        return castResponse;
       } else {
         throw HttpException("Error: ${response.statusCode}");
       }
