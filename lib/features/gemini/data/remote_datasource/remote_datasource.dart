@@ -34,7 +34,7 @@ class GeminiRemoteDataSourceImpl implements GeminiRemoteDataSource {
   Future<List<Recommendations>> genreateRecommendations({
     required String recGenre,
     int maxResults = 10}) async {
-    final prompt = '''
+      final prompt = '''
       Suggest $maxResults $recGenre from TMDB api movies and sort them according to the rating.
       Return only a json array with objects {'title': string, 'overview': string?}.
       Only output the JSON map.
@@ -55,6 +55,7 @@ class GeminiRemoteDataSourceImpl implements GeminiRemoteDataSource {
         .map((l) => Recommendations(title: l.trim()))
         .take(maxResults)
         .toList();
+
   }
   List<Map<String, dynamic>>? _tryParseJsonArray(String raw) {
     try {

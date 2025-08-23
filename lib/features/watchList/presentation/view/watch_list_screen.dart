@@ -13,7 +13,6 @@ import '../../domain/usecases/clear_watchlist.dart' as useCase;
 import '../../domain/usecases/get_watchlist.dart';
 import '../../domain/usecases/remove_from_watchlist.dart';
 
-
 class WatchlistScreen extends StatelessWidget {
   const WatchlistScreen({super.key});
 

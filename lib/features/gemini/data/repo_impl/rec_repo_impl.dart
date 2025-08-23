@@ -1,5 +1,5 @@
 import'../../domain/entities/recommendations.dart';
-import '../../domain/repo/recommendations_repo.dart';
+import '../../domain/repo/recommendation_repo.dart';
 import '../remote_datasource/remote_datasource.dart';
 
 class GetRecRepoImpl implements GetRecRepo {
@@ -13,5 +13,6 @@ class GetRecRepoImpl implements GetRecRepo {
         recGenre: input.recGenre,
         maxResults: input.maxResults
     );
+
   }
 }
