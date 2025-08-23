@@ -9,6 +9,6 @@ abstract class BaseMovieRepository{
   Future<Either<String, List<Movie>?>> getTopRatedMovies();
   Future<Either<String, List<Movie>?>> getUpcomingMovies();
   Future<Either<String, List<Movie>?>> getPopularMovies();
-  Future<Either<String,MovieDetails>> getMovieDetails(int? movieId);
+
 }
 

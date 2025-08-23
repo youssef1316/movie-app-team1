@@ -8,7 +8,6 @@ class AppConstants {
   static const String popularMoviesEndPoint = "/3/movie/popular";
   static const String movieDetailsEndPoint = "/3/movie";
   static const String searchEndPoint = "/3/search/movie";
-  static const String moviesGenresEndpoint = "$baseUrl/3/genre/movie/list";
   static const String imageBaseUrl = "https://image.tmdb.org/t/p/original";
   static const String gemini_api = "AIzaSyD-RaI5fnLOS-MTFYore7qFMMZmU04_fqE";
 }

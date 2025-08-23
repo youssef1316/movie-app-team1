@@ -14,7 +14,7 @@ class RecommendationModel {
   }
 
   Recommendations toEntity() => Recommendations(
-      title: title,
-      overview: overview,
+    title: title,
+    overview: overview,
   );
 }

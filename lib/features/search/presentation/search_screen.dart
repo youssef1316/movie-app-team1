@@ -7,7 +7,6 @@ import 'package:movie_cellula/features/search/presentation/bloc/search_bloc.dart
 import 'package:movie_cellula/features/search/presentation/bloc/search_state.dart';
 import 'package:movie_cellula/features/search/presentation/widgets/no_movies_widget.dart';
 import 'package:movie_cellula/features/search/presentation/widgets/search_movie_widget.dart';
-import '../../../core/utils/dimensions_manager.dart';
 import 'bloc/search_event.dart';
 
 class SearchScreen extends StatefulWidget {

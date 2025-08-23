@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightBlue),
+        scaffoldBackgroundColor: AppColors.mainColor
       ),
       onGenerateRoute: RoutesGenerator.getRoute,
       initialRoute: Routes.splashRoute,

@@ -60,15 +60,7 @@ class MovieRepository extends BaseMovieRepository {
     }
   }
 
-  @override
-  Future<Either<String, MovieDetails>> getMovieDetails(int? movieId) async{
-    try {
-      final movieDetails = await dataSource.getMovieDetails(movieId);
-      return Right(movieDetails);
-    } catch (e) {
-      return Left(e.toString());
-    }
-  }
+
 
 
 }

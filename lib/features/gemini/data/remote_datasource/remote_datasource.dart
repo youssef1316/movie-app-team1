@@ -20,14 +20,14 @@ class GeminiRemoteDataSourceImpl implements GeminiRemoteDataSource {
     if (api.isEmpty) throw StateError("Missing api key!");
 
     return GeminiRemoteDataSourceImpl(
-      model: GenerativeModel(
-        model: AppConfig.geminiModel,
-        apiKey: api,
-        generationConfig: GenerationConfig(
-          temperature: 0.7,
-          maxOutputTokens: 1024
+        model: GenerativeModel(
+            model: AppConfig.geminiModel,
+            apiKey: api,
+            generationConfig: GenerationConfig(
+                temperature: 0.7,
+                maxOutputTokens: 1024
+            )
         )
-      )
     );
   }
   @override
@@ -40,21 +40,22 @@ class GeminiRemoteDataSourceImpl implements GeminiRemoteDataSource {
       Only output the JSON map.
       ''';
 
-      final response = await model.generateContent([Content.text(prompt)]);
-      final text = response.text ?? 'Error in getting response';
+    final response = await model.generateContent([Content.text(prompt)]);
+    final text = response.text ?? 'Error in getting response';
 
-      final parsed = _tryParseJsonArray(text);
-      if (parsed != null) {
-        return parsed
-            .map ((e) => RecommendationModel.fromJson(e).toEntity())
-            .toList();
-      }
-      return text
-          .split('\n')
-          .where((l) => l.trim().isNotEmpty)
-          .map((l) => Recommendations(title: l.trim()))
-          .take(maxResults)
+    final parsed = _tryParseJsonArray(text);
+    if (parsed != null) {
+      return parsed
+          .map ((e) => RecommendationModel.fromJson(e).toEntity())
           .toList();
+    }
+    return text
+        .split('\n')
+        .where((l) => l.trim().isNotEmpty)
+        .map((l) => Recommendations(title: l.trim()))
+        .take(maxResults)
+        .toList();
+
   }
   List<Map<String, dynamic>>? _tryParseJsonArray(String raw) {
     try {

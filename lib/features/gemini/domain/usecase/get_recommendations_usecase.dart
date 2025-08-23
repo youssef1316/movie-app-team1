@@ -1,5 +1,5 @@
 import '../entities/recommendations.dart';
-import '../repo/recommendation_repo.dart';
+import '../repo/recommendations_repo.dart';
 
 class GetRecommendationUseCase {
   final GetRecRepo _repo;

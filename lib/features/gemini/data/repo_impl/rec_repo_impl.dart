@@ -9,9 +9,10 @@ class GetRecRepoImpl implements GetRecRepo {
 
   @override
   Future<List<Recommendations>> getRecommendations(RecommendationInput input) {
-   return remote.genreateRecommendations(
-       recGenre: input.recGenre,
-       maxResults: input.maxResults
-   );
+    return remote.genreateRecommendations(
+        recGenre: input.recGenre,
+        maxResults: input.maxResults
+    );
+
   }
 }

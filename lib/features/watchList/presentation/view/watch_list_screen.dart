@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../home/presentation/view/home_screen.dart';
+
 import '../../domain/entities/movie.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,7 +87,7 @@ class WatchlistScreen extends StatelessWidget {
 }
 
 class _WatchlistMovieRow extends StatelessWidget {
-  final Movie movie;
+  final WishListMovie movie;
   final double screenWidth;
   final double screenHeight;
 
