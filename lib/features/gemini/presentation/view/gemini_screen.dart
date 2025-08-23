@@ -29,9 +29,9 @@ class GeminiScreen extends StatelessWidget {
                   Text(
                     AppStrings.getRecommendation,
                     style: TextStyle(
-                      color: AppColors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
+                        color: AppColors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20
                     ),
                   )
                 ],
@@ -49,12 +49,12 @@ class GeminiScreen extends StatelessWidget {
                   children: [
                     Expanded(
                         child: TextField(
-                          controller: geminiController,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16)
+                            controller: geminiController,
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16)
+                                )
                             )
-                          )
                         )
                     ),
                     SizedBox(width: 8),
@@ -64,15 +64,15 @@ class GeminiScreen extends StatelessWidget {
                         color: AppColors.lightBlue,
                       ),
                       child: IconButton(
-                          onPressed: (){
-                            //TODO
-                          },
-                          icon: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                                Icons.send
-                            ),
+                        onPressed: (){
+                          //TODO
+                        },
+                        icon: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                              Icons.send
                           ),
+                        ),
                         color: AppColors.white,
                       ),
                     )
