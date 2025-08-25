@@ -9,5 +9,5 @@ class AppConstants {
   static const String movieDetailsEndPoint = "/3/movie";
   static const String searchEndPoint = "/3/search/movie";
   static const String imageBaseUrl = "https://image.tmdb.org/t/p/original";
-  static const String gemini_api = "AIzaSyD-RaI5fnLOS-MTFYore7qFMMZmU04_fqE";
+  static const String gemini_api = "AIzaSyAlSo14OdGL_nYBN-FnOfRf_C-yBTZzz7o";
 }

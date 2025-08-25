@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../home/presentation/view/home_screen.dart';
 import '../../domain/entities/movie.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +32,7 @@ class WatchlistScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.mainColor,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: AppColors.mainColor,
           elevation: 0,
           title: const Text(
@@ -40,25 +40,20 @@ class WatchlistScreen extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
-          leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-              onPressed: () => Navigator.pop(context)
-          ),
         ),
         body: BlocBuilder<WatchlistBloc, WatchlistState>(
           builder: (context, state) {
             if (state is WatchlistLoading) {
               return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.white,
-                ),
+                child: CircularProgressIndicator(color: Colors.white),
               );
             } else if (state is WatchlistLoaded) {
               final movies = state.movies;
               return ListView.separated(
                 padding: EdgeInsets.all(screenWidth * 0.04),
                 itemCount: movies.length,
-                separatorBuilder: (_, __) => SizedBox(height: screenHeight * 0.015),
+                separatorBuilder: (_, __) =>
+                    SizedBox(height: screenHeight * 0.015),
                 itemBuilder: (context, index) {
                   final movie = movies[index];
                   return _WatchlistMovieRow(
@@ -72,7 +67,10 @@ class WatchlistScreen extends StatelessWidget {
               return Center(
                 child: Text(
                   state.message,
-                  style: TextStyle(color: Colors.white, fontSize: screenWidth * 0.04),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: screenWidth * 0.04,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               );
@@ -87,7 +85,7 @@ class WatchlistScreen extends StatelessWidget {
 }
 
 class _WatchlistMovieRow extends StatelessWidget {
-  final Movie movie;
+  final WishListMovie movie;
   final double screenWidth;
   final double screenHeight;
 
@@ -113,10 +111,7 @@ class _WatchlistMovieRow extends StatelessWidget {
               width: screenWidth * 0.22,
               height: screenHeight * 0.14,
               color: Colors.grey.shade800,
-              child: const Icon(
-                Icons.broken_image,
-                color: Colors.white70,
-              ),
+              child: const Icon(Icons.broken_image, color: Colors.white70),
             ),
           ),
         ),
@@ -192,11 +187,14 @@ class _WatchlistMovieRow extends StatelessWidget {
             ],
           ),
         ),
-        IconButton(icon: Icon(Icons.delete, color: Colors.red, size:screenWidth*0.06),
-          onPressed: (){
-            BlocProvider.of<WatchlistBloc>(context).add(event.RemoveMovie(movie.title));
+        IconButton(
+          icon: Icon(Icons.delete, color: Colors.red, size: screenWidth * 0.06),
+          onPressed: () {
+            BlocProvider.of<WatchlistBloc>(
+              context,
+            ).add(event.RemoveMovie(movie.title));
           },
-        )
+        ),
       ],
     );
   }

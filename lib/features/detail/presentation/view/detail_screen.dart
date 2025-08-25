@@ -52,7 +52,7 @@ class DetailScreen extends StatelessWidget {
                   centerTitle: true,
                   leading: IconButton(
                     icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () =>Navigator.pop(context),
                   ),
                   actions: [
                     IconButton(
@@ -71,7 +71,8 @@ class DetailScreen extends StatelessWidget {
                               duration: movieDetails.runtime != null
                                   ? "${movieDetails.runtime} minutes"
                                   : "Unknown",
-                              poster: movieDetails.posterPath ?? "",
+                              poster:
+                                  "${AppConstants.imageBaseUrl}${movieDetails.posterPath}",
                             ),
                           ),
                         );
@@ -232,8 +233,8 @@ class DetailScreen extends StatelessWidget {
                                   width: width * 0.05,
                                 ),
                                 const SizedBox(width: 4),
-                                 Text(
-                                  movieDetails.genres?[1].name??"",
+                                Text(
+                                  movieDetails.genres?[1].name ?? "",
                                   style: TextStyle(
                                     color: AppColors.lightGrey,
                                     fontSize: 14,

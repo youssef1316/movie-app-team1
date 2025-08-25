@@ -43,6 +43,8 @@ dependencies:
   shared_preferences: ^2.2.3
   flutter_svg: ^2.0.13
   google_generative_ai: ^0.4.7
+  flutter_gemini: ^3.0.0
+  dash_chat_2: ^0.0.21
 
 
 dev_dependencies:
