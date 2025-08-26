@@ -12,7 +12,21 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/detail/data/dataSource/movie_detail_data_source.dart'
+    as _i911;
+import '../../features/detail/data/repositoryImp/movie_details_repo_imp.dart'
+    as _i728;
+import '../../features/detail/domian/repository/movie_details_repo.dart'
+    as _i915;
+import '../../features/detail/domian/usecsae/get_movie_cast.dart' as _i1067;
 import '../../features/detail/domian/usecsae/get_movie_details.dart' as _i1014;
+import '../../features/detail/domian/usecsae/get_movie_reviews.dart' as _i142;
+import '../../features/gemini/data/remote_datasource/remote_datasource.dart'
+    as _i80;
+import '../../features/gemini/data/repo_impl/rec_repo_impl.dart' as _i834;
+import '../../features/gemini/domain/repo/recommendation_repo.dart' as _i801;
+import '../../features/gemini/domain/usecase/get_recommendations_usecase.dart'
+    as _i438;
 import '../../features/home/data/dataSource/movie_data_source.dart' as _i575;
 import '../../features/home/data/repositoryImp/movie_repo_imp.dart' as _i360;
 import '../../features/home/domain/repository/movie_repo.dart' as _i868;
@@ -38,17 +52,27 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.singleton<_i1047.ApiManager>(() => _i1047.ApiManager());
+    gh.lazySingleton<_i80.GeminiRemoteDataSource>(
+      () => _i80.GeminiRemoteDataSourceImpl.fromConfig(),
+    );
     gh.factory<_i575.BaseMovieDataSource>(
       () => _i575.MovieDataSource(gh<_i1047.ApiManager>()),
+    );
+    gh.factory<_i911.BaseMovieDetailsDataSource>(
+      () => _i911.MovieDetailsDataSource(gh<_i1047.ApiManager>()),
+    );
+    gh.factory<_i915.BaseMovieDetailsRepository>(
+      () =>
+          _i728.MovieDetailsRepository(gh<_i911.BaseMovieDetailsDataSource>()),
     );
     gh.factory<_i316.BaseSearchDataSource>(
       () => _i316.SearchDataSource(gh<_i1047.ApiManager>()),
     );
+    gh.factory<_i801.GetRecRepo>(
+      () => _i834.GetRecRepoImpl(gh<_i80.GeminiRemoteDataSource>()),
+    );
     gh.factory<_i868.BaseMovieRepository>(
       () => _i360.MovieRepository(gh<_i575.BaseMovieDataSource>()),
-    );
-    gh.factory<_i1014.GetMovieDetailsUseCase>(
-      () => _i1014.GetMovieDetailsUseCase(gh<_i868.BaseMovieRepository>()),
     );
     gh.factory<_i248.NowPlayingMoviesUseCase>(
       () => _i248.NowPlayingMoviesUseCase(gh<_i868.BaseMovieRepository>()),
@@ -64,6 +88,19 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i474.GetUpcomingMoviesUseCase>(
       () => _i474.GetUpcomingMoviesUseCase(gh<_i868.BaseMovieRepository>()),
+    );
+    gh.factory<_i438.GetRecommendationUseCase>(
+      () => _i438.GetRecommendationUseCase(gh<_i801.GetRecRepo>()),
+    );
+    gh.factory<_i1067.MovieCastUseCase>(
+      () => _i1067.MovieCastUseCase(gh<_i915.BaseMovieDetailsRepository>()),
+    );
+    gh.factory<_i1014.GetMovieDetailsUseCase>(
+      () =>
+          _i1014.GetMovieDetailsUseCase(gh<_i915.BaseMovieDetailsRepository>()),
+    );
+    gh.factory<_i142.MovieReviewsUseCase>(
+      () => _i142.MovieReviewsUseCase(gh<_i915.BaseMovieDetailsRepository>()),
     );
     gh.factory<_i535.BaseSearchRepository>(
       () => _i796.SearchRepository(gh<_i316.BaseSearchDataSource>()),

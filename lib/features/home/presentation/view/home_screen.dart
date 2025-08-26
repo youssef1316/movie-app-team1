@@ -89,7 +89,6 @@ class HomeScreen extends StatelessWidget {
               ),
 
               SizedBox(height: 10),
-
               // Tabs with Movies (from Bloc)
               DefaultTabController(
                 length: 4,

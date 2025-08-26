@@ -21,7 +21,7 @@ class TopFiveCard extends StatelessWidget {
       onTap: () => Navigator.pushNamed(
         context,
         Routes.movieDetailRoute,
-        arguments: movie,
+        arguments: movie.id,
       ),
       child: Stack(
         alignment: AlignmentDirectional.bottomStart,

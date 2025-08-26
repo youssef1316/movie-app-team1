@@ -1,11 +1,11 @@
-class Movie {
+class WishListMovie {
   final String title;
   final double rating;
   final String year;
   final String duration;
   final String poster;
 
-  Movie({
+  WishListMovie({
     required this.title,
     required this.rating,
     required this.year,

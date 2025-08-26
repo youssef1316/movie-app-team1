@@ -7,7 +7,6 @@ import 'package:movie_cellula/features/search/presentation/bloc/search_bloc.dart
 import 'package:movie_cellula/features/search/presentation/bloc/search_state.dart';
 import 'package:movie_cellula/features/search/presentation/widgets/no_movies_widget.dart';
 import 'package:movie_cellula/features/search/presentation/widgets/search_movie_widget.dart';
-import '../../../core/utils/dimensions_manager.dart';
 import 'bloc/search_event.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -17,13 +16,14 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   late SearchBloc searchBloc = SearchBloc(getIt());
-
+  final TextEditingController _controller = TextEditingController();
   String query = '';
-@override
+  @override
   void initState() {
     searchBloc.add(GetSearchedMovies(query));
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -45,6 +45,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
               TextField(
+                controller: _controller,
                 style: TextStyle(color: AppColors.white),
                 onChanged: (value) {
                   setState(() {
@@ -56,14 +57,26 @@ class _SearchScreenState extends State<SearchScreen> {
                     searchBloc.add(GetSearchedMovies(query));
                   }
                 },
-
                 decoration: InputDecoration(
                   filled: true,
                   hintText: "Search",
                   hintStyle: TextStyle(color: Color(0xff67686D), fontSize: 18),
-                  suffixIcon: ImageIcon(
-                    AssetImage(IconsManager.searchbarIcon),
-                    color: Color(0xff67686D),
+                  suffixIcon: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          searchBloc.add(ResetSearch());
+                          _controller.clear();
+                        },
+                        icon: Icon(Icons.cancel, color: Color(0xff67686D)),
+                      ),
+                      ImageIcon(
+                        AssetImage(IconsManager.searchbarIcon),
+                        color: Color(0xff67686D),
+                      ),
+                    ],
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
@@ -82,7 +95,6 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
 
               BlocBuilder<SearchBloc, SearchState>(
-
                 builder: (context, state) {
                   if (state is SearchInitialState) {
                     return Expanded(
@@ -96,24 +108,21 @@ class _SearchScreenState extends State<SearchScreen> {
                           ),
                         ),
                       ),
-                    );}
+                    );
+                  }
 
                   if (state is SearchErrorState) {
                     return Text(state.message ?? "");
                   }
                   if (state is EmptyListState) {
-                    return Expanded(
-                      child: Center(
-                      child:  NoMoviesWidget()
-                      ),
-                    );
+                    return Expanded(child: Center(child: NoMoviesWidget()));
                   }
                   if (state is SearchLoadedState) {
                     return Expanded(
                       child: ListView.builder(
                         itemBuilder: (context, index) {
                           final movie = state.searchedMovies[index];
-                          return SearchMovieWidget(movieId: movie.id!,);
+                          return SearchMovieWidget(movieId: movie.id!);
                         },
                         itemCount: state.searchedMovies.length,
                       ),
@@ -122,9 +131,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   if (state is SearchLoadingState) {
                     return Center(child: CircularProgressIndicator());
                   }
-                  return SizedBox(
-
-                  );
+                  return SizedBox();
                 },
               ),
             ],

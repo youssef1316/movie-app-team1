@@ -6,7 +6,6 @@ import 'package:movie_cellula/features/splash/presentation/splash_screen.dart';
 import 'core/DI/di.dart';
 import 'core/navigation/routes_manager/routes.dart';
 import 'core/navigation/routes_manager/routes_generator.dart';
-
 import 'features/watchList/data/dataSources/watchList_local_dataSource.dart';
 import 'features/watchList/data/repo_impl/watch_list_repo.dart';
 import 'features/watchList/domain/usecases/add_to_watchlist.dart';
@@ -46,6 +45,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightBlue),
+        scaffoldBackgroundColor: AppColors.mainColor
       ),
       onGenerateRoute: RoutesGenerator.getRoute,
       initialRoute: Routes.splashRoute,

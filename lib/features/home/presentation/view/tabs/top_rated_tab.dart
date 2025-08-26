@@ -27,7 +27,7 @@ class TopRatedTab extends StatelessWidget {
             Navigator.pushNamed(
               context,
               Routes.movieDetailRoute,
-              arguments: movie,
+              arguments: movie.id,
 
             );
           },

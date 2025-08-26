@@ -16,7 +16,7 @@ class WatchListMovieModel {
     required this.poster
   });
 
-  factory WatchListMovieModel.fromEntity (Movie movie) => WatchListMovieModel(
+  factory WatchListMovieModel.fromEntity (WishListMovie movie) => WatchListMovieModel(
       title: movie.title,
       rating: movie.rating,
       year: movie.year,
@@ -24,7 +24,7 @@ class WatchListMovieModel {
       poster: movie.poster
   );
 
-  Movie toEntity() => Movie(
+  WishListMovie toEntity() => WishListMovie(
       title: title,
       rating: rating,
       year: year,
