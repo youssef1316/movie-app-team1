@@ -1,3 +1,4 @@
+
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,8 @@ import 'package:movie_cellula/features/gemini/domain/entities/recommendations.da
 import 'package:movie_cellula/features/gemini/presentation/bloc/rec_bloc.dart';
 import 'package:movie_cellula/features/gemini/presentation/bloc/rec_event.dart';
 import 'package:movie_cellula/features/gemini/presentation/bloc/rec_state.dart';
+import 'package:movie_cellula/features/gemini/presentation/widgets/gemini_movie_widget.dart';
+
 
 class GeminiScreen extends StatefulWidget {
   const GeminiScreen({super.key});
@@ -53,6 +56,7 @@ class _GeminiScreenState extends State<GeminiScreen> {
   }
 
   Widget _buildUI() {
+
     return BlocConsumer<MovieRecommendationsBloc, RecommendationState>(
       bloc: recBloc,
       listener: (context, state) {
@@ -115,32 +119,17 @@ class _GeminiScreenState extends State<GeminiScreen> {
                 );
               }
               if (message.customProperties?["recommendations"] != null) {
+
                 final recs =
                     message.customProperties!["recommendations"]
                         as List<Recommendations>;
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: recs.map((r) {
-                    return Card(
-                      margin: const EdgeInsets.symmetric(vertical: 6),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      color: AppColors.darkGrey,
-                      child: ListTile(
-                        title: Text(
-                          "${r.title} (${r.genre})",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        subtitle: Text(
-                          r.overview ?? "",
-                          style: const TextStyle(color: Colors.white70),
-                        ),
-                      ),
-                    );
+                    return GeminiMovieWidget(title: r.title,
+                        rating: r.voteAverage??0,
+                        year: r.releaseDate.toString(), duration: r.runtime.toString(),
+                        poster: r.posterPath??"");
                   }).toList(),
                 );
               }

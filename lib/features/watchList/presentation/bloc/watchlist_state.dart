@@ -1,4 +1,3 @@
-// lib/features/watchlist/presentation/bloc/watchlist_state.dart
 import '../../domain/entities/movie.dart';
 
 abstract class WatchlistState {

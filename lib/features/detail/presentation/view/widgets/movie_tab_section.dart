@@ -10,6 +10,8 @@ class MovieTabSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final height = size.height;
     return DefaultTabController(
       length: 3,
       child: Column(
@@ -31,7 +33,7 @@ class MovieTabSection extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           SizedBox(
-            height: 200,
+            height: height*0.35,
             child: TabBarView(
               children: [
                 Padding(

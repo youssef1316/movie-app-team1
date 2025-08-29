@@ -48,15 +48,23 @@ Return ONLY a valid JSON array of objects.
  IMPORTANT: All values must be valid JSON strings on a single line (no line breaks inside strings).
 Each object must have:
 - "title"
-- "overview"
 - "genre"
+- "id"
+- "voteAverage"
+- "posterPath"
+- "runtime"
+- "releaseDate"
 
 Format:
 [
   {
     "title": "Movie Title",
-    "overview": "Short description",
-    "genre": "Action"
+    "genre": "Action",
+    "id: 123,
+    "voteAverage":4.5,
+     "posterPath":"poster of movie",
+     "runtime":128,
+     "releaseDate":"2005-06-6"
   }
 ]
 If no such movies exist, return an empty array [].

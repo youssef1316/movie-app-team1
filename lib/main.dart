@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_cellula/core/utils/app_strings.dart';
 import 'package:movie_cellula/core/utils/colors_manager.dart';
-import 'package:movie_cellula/features/splash/presentation/splash_screen.dart';
 import 'core/DI/di.dart';
 import 'core/navigation/routes_manager/routes.dart';
 import 'core/navigation/routes_manager/routes_generator.dart';
