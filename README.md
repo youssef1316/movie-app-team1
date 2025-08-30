@@ -10,7 +10,7 @@ Users can search for movies, view details, manage watchlists, and get recommenda
 - [flutter_gemini](https://pub.dev/packages/flutter_gemini) to integrate with gemini
 - [shared-preferences](https://pub.dev/packages/shared_preferences) for storing data
 - [dartz](https://pub.dev/packages/dartz) for functional programming
-- [equatable](https://pub.dev/packages/equatable) to compare objects in Dart\
+- [equatable](https://pub.dev/packages/equatable) to compare objects in Dart
 
 
 ## App ScreenShots
