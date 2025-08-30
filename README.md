@@ -1,16 +1,35 @@
 # movie_cellula
+A Flutter-based movie application integrated with Gemini AI for dynamic recommendation generation.
+Users can search for movies, view details, manage watchlists, and get recommendations tailored to their viewing habits.
 
-A new Flutter project.
+## Main packages used
 
-## Getting Started
+- [htp](https://pub.dev/packages/http) to make integration with API
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc) as state management
+- [injectable](https://pub.dev/packages/injectable) to make dependency injection
+- [flutter_gemini](https://pub.dev/packages/flutter_gemini) to integrate with gemini
+- [shared-preferences](https://pub.dev/packages/shared_preferences) for storing data
+- [dartz](https://pub.dev/packages/dartz) for functional programming
+- [equatable](https://pub.dev/packages/equatable) to compare objects in Dart\
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## App ScreenShots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Here are some screenshots for the application:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p>
+<img src="assets/screenShots/img1.jpg"  width="250">
+<img src="assets/screenShots/img2.jpg"  width="250">
+<img src="assets/screenShots/img3.jpg"  width="250">
+<img src="assets/screenShots/img4.jpg"  width="250">
+<img src="assets/screenShots/img5.jpg"  width="250">
+<img src="assets/screenShots/img6.jpg"  width="250">
+</p>
+
+
+## Folder structure
+I Have applied clean architecture concept With MVVM architecture
+
+### 📽️ Demo Video
+
+[▶️ Watch the video](https://drive.google.com/file/d/1PHQJiHa9X1DURdIMLt4QS6nCzEEX7W9C/view?usp=drive_link)
