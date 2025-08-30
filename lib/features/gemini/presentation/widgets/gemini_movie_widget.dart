@@ -29,6 +29,7 @@ class GeminiMovieWidget extends StatelessWidget {
     final width = size.width;
     final height = size.height;
     return Card(
+
       margin: const EdgeInsets.symmetric(vertical: 6),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       color: AppColors.darkGrey,
@@ -37,11 +38,11 @@ class GeminiMovieWidget extends StatelessWidget {
           Image.network(
             "https://image.tmdb.org/t/p/original$poster",
             width: width * 0.22,
-            height: height * 0.17,
+            height: height * 0.2,
             fit: BoxFit.cover,
             errorBuilder: (_, __, ___) => Container(
               width: width * 0.22,
-              height: height * 0.17,
+              height: height * 0.2,
               color: Colors.grey.shade800,
               child: const Icon(Icons.movie, color: Colors.white70),
             ),
@@ -50,7 +51,7 @@ class GeminiMovieWidget extends StatelessWidget {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(vertical: height*0.001),
-              height: height * 0.17,
+              height: height * 0.2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +127,7 @@ class GeminiMovieWidget extends StatelessWidget {
                       icon: Image.asset(
                         IconsManager.saveIcon,
                         color: Colors.white,
-                        width: width * 0.04,
+                        width: width * 0.03,
                       ),
                       onPressed: () {
                         BlocProvider.of<WatchlistBloc>(context).add(
