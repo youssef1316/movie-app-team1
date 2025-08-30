@@ -32,4 +32,4 @@ I Have applied clean architecture concept With MVVM architecture
 
 ### 📽️ Demo Video
 
-[▶️ Watch the video]([https://drive.google.com/file/d/1PHQJiHa9X1DURdIMLt4QS6nCzEEX7W9C/view?usp=drive_link](https://drive.google.com/file/d/1PHQJiHa9X1DURdIMLt4QS6nCzEEX7W9C/view?usp=sharing))
+[▶️ Watch the video](https://drive.google.com/file/d/1PHQJiHa9X1DURdIMLt4QS6nCzEEX7W9C/view?usp=sharing)
